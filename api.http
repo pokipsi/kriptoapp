@@ -1,0 +1,23 @@
+# POST http://127.0.0.1:5000/api/alerts/ HTTP/1.1
+# content-type: application/json
+# Accept: application/json
+
+# {
+#     "value": 7500,
+#     "type": "lt"
+# }
+
+# PUT http://127.0.0.1:5000/api/alerts/5e135256e7179a2f010a0fc7 HTTP/1.1
+# content-type: application/json
+# Accept: application/json
+
+# {
+#     "value": 1001,
+#     "type": "gt"
+# }
+
+GET http://127.0.0.1:5000/api/alerts/ HTTP/1.1
+
+# DELETE http://127.0.0.1:5000/api/alerts/5e1354783116a337180234e2 HTTP/1.1
+
+# GET http://127.0.0.1:5000/api/coins/ HTTP/1.1
