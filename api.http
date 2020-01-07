@@ -3,7 +3,7 @@
 # Accept: application/json
 
 # {
-#     "value": 7500,
+#     "value": 7501,
 #     "type": "lt"
 # }
 
@@ -16,8 +16,9 @@
 #     "type": "gt"
 # }
 
-GET http://127.0.0.1:5000/api/alerts/ HTTP/1.1
+# GET http://127.0.0.1:5000/api/alerts/ HTTP/1.1
 
 # DELETE http://127.0.0.1:5000/api/alerts/5e1354783116a337180234e2 HTTP/1.1
 
-# GET http://127.0.0.1:5000/api/coins/ HTTP/1.1
+GET http://127.0.0.1:5000/api/coins/ HTTP/1.1
+

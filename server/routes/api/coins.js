@@ -1,40 +1,18 @@
-require('dotenv').config();
 const express = require('express');
-const request = require('request');
-
 const router = express.Router();
+
+const Coins = require('../../business/coins');
+const coins = new Coins();
 
 // GET
 
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 
-    const apikey = process.env.API_KEY;
-    const host = process.env.API_HOST;
+    const data = await coins.get();
 
-    const endpoint = `${host}/v1/cryptocurrency/quotes/latest`;
-    const symbol = 'BTC,ETH,XRP,USDT,EOS';
-    const uri = `${endpoint}?symbol=${symbol}`;
-    request(
-        {
-            uri: uri,
-            headers: {
-                'X-CMC_PRO_API_KEY': apikey
-    
-            }
-        }, (error, response, body) => {
-        if(error){
-            res.send("error");
-        }else{
-            if (response.statusCode == 200) {
-                res.send(body);
-            } else {
-                res.send(response);
-            }
-        }
-    });
+    res.send(data);
 
-
-    // res.send(`
+    // res.send(
     //     {
     //         "status": {
     //             "timestamp": "2020-01-06T13:08:12.278Z",
@@ -186,7 +164,7 @@ router.get('/', (req, res) => {
     //             }
     //         }
     //     }
-    // `);
+    // );
 
 });
 

@@ -9,7 +9,7 @@
       <v-list-item-content>
         <div class="overline mb-4">{{ coin.symbol }} ({{ coin.id }})</div>
         <v-list-item-title class="headline mb-1">{{ coin.name }}</v-list-item-title>
-        <v-list-item-subtitle>{{ coin.quote.USD.price.toFixed(2) }} $</v-list-item-subtitle>
+        <v-list-item-subtitle>$ {{ coin.quote.USD.price.toFixed(2) }}</v-list-item-subtitle>
         <v-btn small v-if="coin.id == 1" color="primary" class="ml-auto" max-width="100" :to="`/detail/${coin.id}`">Details</v-btn>
       </v-list-item-content>
     </v-list-item>
@@ -40,6 +40,6 @@ export default {
   },
   mounted(){
     this.getCoins();
+  },
   }
-}
 </script>

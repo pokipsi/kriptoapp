@@ -48,7 +48,7 @@
                     
                   </div>
                   <div v-else>
-                    {{ getSign(alert.type) }} {{ alert.value }}$
+                    {{ display(alert) }}
                   </div>
                 </v-list-item-title>
                 
@@ -79,6 +79,9 @@
 </template>
 
 <script>
+
+import { getSign } from '../utils';
+
 export default {
   name: 'alerts',
   data(){
@@ -92,6 +95,9 @@ export default {
     }
   },
   methods: {
+    display(alert) {
+      return `${getSign(alert.type)} ${alert.value} $`;
+    },
     confirmUpdate(obj){
       if(obj.type && obj.value){
         if(isNaN(obj.value)){
@@ -105,7 +111,8 @@ export default {
           },
           body: JSON.stringify({
             value: parseFloat(obj.value),
-            type: obj.type
+            type: obj.type,
+            status: obj.status
           })
         }).then(response => response.json()).then(() => {
           this.getAlerts();
@@ -146,7 +153,7 @@ export default {
     },
     getAlerts(){
       fetch('/api/alerts').then(response => response.json()).then(json => {
-        this.alerts = json;
+        this.alerts = json.reverse();
       });
     },
     deleteAlert(id){
@@ -158,9 +165,6 @@ export default {
         });
       }
     },
-    getSign(type){
-      return type == 'lt' ? '<' : '>';
-    }
   },
   mounted(){
     this.getAlerts();
