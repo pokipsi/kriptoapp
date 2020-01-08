@@ -30,7 +30,8 @@ router.put('/:id', async (req, res) => {
     const data = await alerts.update({
         _id: req.params.id,
         value: req.body.value,
-        type: req.body.type
+        type: req.body.type,
+        status: req.body.status
     });
     res.status(200).send(data);
 });

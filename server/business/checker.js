@@ -10,7 +10,7 @@ const Checker = {
     check: async function(){
 
         const coinsDataAccessor = new Coins();
-        const response = await coinsDataAccessor.get("BTC");
+        const response = await coinsDataAccessor.get();
 
         const price = JSON.parse(response).data.BTC.quote.USD.price;
 
@@ -20,8 +20,8 @@ const Checker = {
         const display = [];
 
         alerts.forEach(alert => {
-            if(!alert.status && compare(price, alert.value, alert.type)){
-                alert.status = true;
+            if(alert.status && compare(price, alert.value, alert.type)){
+                alert.status = false;
                 alertsDataAccessor.update(alert);
                 display.push(alert);
             }
@@ -30,7 +30,8 @@ const Checker = {
         return {
             all: alerts,
             display: display,
-            currentPrice: price
+            currentPrice: price,
+            coins: JSON.parse(response).data
         }
 
     },

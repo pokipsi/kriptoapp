@@ -16,7 +16,7 @@ function Alerts(){
         await alerts.insertOne({
             value: alert.value,
             type: alert.type,
-            status: false
+            status: true
         });
         return {
             msg: "saved"

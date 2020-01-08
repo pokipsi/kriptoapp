@@ -35,7 +35,7 @@ io.on('connection', () => {
     if(x === null) {
         
         x = setInterval(async () => {
-            //check every 10s
+            // check every 10s
             let data = await Checker.check();
             //data holds "all" alerts (active and inactive), and alerts for "display"
             //if "display" has something in it, send data to user using websocket
@@ -44,7 +44,10 @@ io.on('connection', () => {
                     data: data
                 });
             }
-        }, 10000);
+            io.emit("coins", {
+                data: data.coins
+            })
+        }, 5000);
     }
     console.log("User connected");
 });

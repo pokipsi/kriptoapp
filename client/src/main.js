@@ -5,12 +5,7 @@ import Routes from './routes.js';
 import Store from './store.js';
 import vuetify from './plugins/vuetify';
 
-// import VueWebsocket from "vue-websocket";
-// Vue.use(VueWebsocket);
-
 Vue.config.productionTip = false;
-
-
 
 new Vue({
   render: h => h(App),

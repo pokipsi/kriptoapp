@@ -17,7 +17,7 @@ function Coins(){
                 }
             }, (error, response, body) => {
                 if (error) {
-                    resolve("error");
+                    reject("error");
                 } else {
                     if (response.statusCode == 200) {
                         resolve(body);
